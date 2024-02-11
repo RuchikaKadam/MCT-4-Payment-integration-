@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+              <img src="./assets/logo_SI.svg" alt="Sanskrit_insider_logo" />
+            </div>
+            <ul>
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="#">Courses</a></li>
+              <li><a href="./cart.html" target="_self">Cart</a></li>
+              <li><a href="#">Sign-up</a></li>
+            </ul>
+          </div>
+    </header>
+    <section class="cart_container">
+        <h2>Start Learning!</h2>
+        <div class="product"></div>
+        <button class="payNow" id="payNow">Pay <span>&#8377</span></button>
+    </section>
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script src="./script.js"></script>
+</body>
+</html>

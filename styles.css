@@ -1,0 +1,286 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", Poppins, "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif;
+}
+:root {
+  --dark: #1f0a57;
+  --light: #65b4ec;
+  --bg: #f5f6f8;
+  --hover: #cbc7f7;
+  --shadow: #c5f0e8;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background: #6055d6;
+  color: var(--bg);
+}
+header {
+  background: url(./assets/bg_SI.png), linear-gradient(90deg, #1f0a57, #1f0a57);
+}
+.container {
+  /* border: 2px solid #1f0a57; */
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  min-height: 100px;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  background-color: #1f0a573b;
+  width: 100%;
+  height: 4.5rem;
+  font: 600 0.875rem/0.875rem "Nunito Sans", sans-serif;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.logo {
+  border: #1f0a57;
+  /* margin-top: 300px; */
+  /* position: relative; */
+}
+.navbar ul {
+  list-style-type: none;
+  min-height: 25rem;
+  margin-top: 1.8rem;
+}
+.navbar ul li {
+  display: inline-block;
+  margin-right: 2rem;
+}
+.navbar ul li a {
+  text-decoration: solid;
+  font-size: 1.6rem;
+  color: var(--bg);
+  transition: 0.5s ease;
+}
+.navbar ul li a:hover {
+  color: var(--hover);
+  text-shadow: 2px 2px 2px #1f0a57;
+}
+.navbar ul li.active a {
+  color: var(--shadow);
+}
+.brandline {
+  position: relative;
+  margin-top: 7.5rem;
+  min-height: 20px;
+  /* border:2px solid green; */
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+.courses_main_container {
+  margin: 7.5rem;
+  padding: 1rem auto;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: linear-gradient(
+    to bottom right,
+    #27242f,
+    #13033964
+  ); /* Adjust the alpha for opacity */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.778); /* Subtle shadow */
+  backdrop-filter: blur(1.5rem); /* The frosted glass effect */
+  padding: 20px; /* Spacing inside the container */
+  border: 1px solid #27242f68; /* Optional: border for better definition */
+  min-height: 30rem;
+}
+.courses_main_container h2 {
+  /* border: 2px solid #1f0a57; */
+  top: 1rem;
+  width: 100%;
+  text-align: center;
+  font-size: 2.8rem;
+  color: var(--hover);
+  text-shadow: 2px 2px 2px #1f0a57;
+  position: absolute;
+}
+.courses_main_container .cardContainer {
+  /* border: 2px dotted darkgreen; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+  margin-bottom: 0;
+  padding: 2rem;
+  width: 100%;
+  justify-content: space-between;
+}
+.courses_main_container .courseCard {
+  max-width: 33%;
+  color: #c6c1d4;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 2px 2px rgba(202, 202, 202, 0.778);
+  /* text-align: center; */
+}
+.courses_main_container .courseCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 2px rgba(202, 202, 202, 0.778);
+  /* border-radius: 1rem; */
+}
+.glass-effect {
+  min-height: 100%;
+  background: linear-gradient(to bottom right, #27242f, #13033922);
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  backdrop-filter: blur(2rem); /* The frosted glass effect */
+  padding: 2rem; /* Spacing inside the container */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Optional: border for better definition */
+  padding-bottom: 0;
+}
+.glass-effect h3 {
+  color: #c4d6fa;
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+.pricing-plan::before {
+  content: "";
+  position: absolute;
+  top: 41.5%;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background-color: #ffffff28;
+}
+.pricing-plan ul {
+  margin-top: 2rem;
+  list-style: none;
+  /* font-size: 0.8rem; */
+  line-height: 1.1rem;
+}
+.pricing-plan button {
+  position: absolute;
+  bottom: 10%;
+  font-size: 1rem;
+  padding: 0.8rem;
+  background-color: #ffffff88;
+  outline: none;
+  border-radius: 1rem;
+  border-color: #cbc7f7;
+  color: #27242f;
+  cursor: pointer;
+}
+.popup{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f2f2f200;
+  border: 1px solid #cccccc00;
+  padding: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  border-radius: 100%;
+}
+.sign-up-section {
+  position: absolute;
+  right: 7.5rem;
+}
+.glass-container {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+}
+.signup-form {
+  text-align: center;
+  color: var(--hover);
+  text-shadow: 2px 2px 2px #1f0a57;
+}
+.input-group {
+  margin-top: 1rem;
+  margin-bottom: 15px;
+  position: relative;
+}
+.input-group input {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  color: #fff;
+}
+.input-group input:focus {
+  outline: none;
+  border: #c6c1d4;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
+#signup-btn {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(120deg, #27242f, #13033964);
+  color: white;
+  margin-top: 10px;
+}
+.emptySpace{
+    min-height: 100px;
+}
+
+/* cart css */
+.cart_container {
+  width: 80vw;
+  min-height: 30rem;
+  margin: 7.5rem;
+  padding: 1rem auto;
+  border-radius: 1rem;
+  background: linear-gradient(
+    to bottom right,
+    #27242f,
+    #13033964
+  ); /* Adjust the alpha for opacity */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.778); /* Subtle shadow */
+  backdrop-filter: blur(1.5rem); /* The frosted glass effect */
+  padding: 20px; /* Spacing inside the container */
+  border: 1px solid #27242f68; /* Optional: border for better definition */
+  align-items: center;
+}
+.cart_container h2 {
+  /* border: 2px solid #1f0a57; */
+  top: 1rem;
+  width: 100%;
+  text-align: center;
+  font-size: 2.8rem;
+  color: var(--hover);
+  text-shadow: 2px 2px 2px #1f0a57;
+}
+.cart_container button{
+    position: absolute;
+    cursor: pointer;
+    width: 40%;
+    height: 15%;
+    bottom: 9%;
+    left: 29%;
+    font-size: 2rem;
+  padding: 0.8rem;
+  background-color: #ffffff88;
+  outline: none;
+  border-radius: 1.2rem;
+  border-color: #cbc7f7;
+  color: #27242f;
+  cursor: pointer;
+}
+.cart_container button:hover{
+    transform: scale(0.98);
+    color: #474157;
+}

@@ -1,81 +1,19 @@
-// const addToCartBtn = document.querySelector('.btn');
-//   const cart = [];
-
-// const { urlencoded } = require("body-parser");
-
-//   addToCartBtn.addEventListener('click', () => {
-//     const product = {
-//       name: 'Beginner',
-//       price: 10
-//     };
-//     cart.push(product);
-//     console.log(cart);
-//   });
-  
-
-
-// $(document).ready(function(){
-// 	$('.pay-form').submit(function(e){
-// 		e.preventDefault();
-
-// 		var formData = $(this).serialize();
-
-// 		$.ajax({
-// 			url:"/createOrder",
-// 			type:"POST",
-// 			data: formData,
-// 			success:function(res){
-// 				if(res.success){
-// 					var options = {
-// 						"key": ""+res.key_id+"",
-// 						"amount": ""+res.amount+"",
-// 						"currency": "INR",
-// 						"name": ""+res.product_name+"",
-// 						"description": ""+res.description+"",
-// 						"image": "https://dummyimage.com/600x400/000/fff",
-// 						"order_id": ""+res.order_id+"",
-// 						"handler": function (response){
-// 							alert("Payment Succeeded");
-// 							// window.open("/","_self")
-// 						},
-// 						"prefill": {
-// 							"contact":""+res.contact+"",
-// 							"name": ""+res.name+"",
-// 							"email": ""+res.email+""
-// 						},
-// 						"notes" : {
-// 							"description":""+res.description+""
-// 						},
-// 						"theme": {
-// 							"color": "#2300a3"
-// 						}
-// 					};
-// 					var razorpayObject = new Razorpay(options);
-// 					razorpayObject.on('payment.failed', function (response){
-// 							alert("Payment Failed");
-// 					});
-// 					razorpayObject.open();
-// 				}
-// 				else{
-// 					alert(res.msg);
-// 				}
-// 			}
-// 		})
-
-// 	});
-// });
-
-
-
 let cartData = sessionStorage.getItem("cartData")
   ? JSON.parse(sessionStorage.getItem("cartData"))
   : [];
 
+let totalPrice = cartData.reduce((acc, curItem) => {
+  return acc + curItem.price;
+}, 0);
+
+let amountToBePaid = totalPrice;
+const courseDiv = document.createElement("div");
+const btn = document.querySelector("#payNow");
 // Cart
 function cartDataLoad() {
   let cart = document.querySelector(".cart");
   cartData.map((course) => {
-    const courseDiv = document.createElement("div");
+    
     courseDiv.classList.add("course");
 
     // Add the course details to the div
@@ -87,16 +25,15 @@ function cartDataLoad() {
     // Add the course div to the cart container
     cart.appendChild(courseDiv);
     // Update the total price
-
-    const btn = document.querySelector("#payNow");
-    let totalPrice = cartData.reduce((acc, curItem) => {
-      return acc + curItem.price;
-    }, 0);
+    
+    
+    btn.addEventListener("click",() =>{
+      initializeRazorpay(amountToBePaid);
+    })
 
     btn.innerHTML = `Pay &#8377 ${totalPrice}`;
   });
 }
-
 //2
 // Get the cart container and pay now button
 const cartContainer = document.querySelector(".cart_container");
@@ -104,7 +41,7 @@ const cartContainer = document.querySelector(".cart_container");
 // Function to add a course to the cart
 function addToCart(course) {
   let isExist = cartData.find((item) => item.name == course.name);
-
+  
   if (!isExist) {
     cartData.push(course);
     sessionStorage.removeItem("cartData");
@@ -125,7 +62,6 @@ function updateTotalPrice(priceChange) {
     ".totalPrice"
   ).textContent = `Total Price: &#8377; ${totalPrice + priceChange}`;
 }
-
 // Add event listeners to the add to cart buttons
 document.querySelectorAll(".addToCart").forEach((button) => {
   button.addEventListener("click", () => {
@@ -138,35 +74,25 @@ document.querySelectorAll(".addToCart").forEach((button) => {
 });
 
 // Add event listener to the pay now button
-const payNowButton = document.querySelector("payNow");
+// const payNowButton = document.getElementById("payNow");
 
-// Event listener for keyup event inside the form
-// payNowButton.addEventListener("keyup", ()=>{
-// 	// Retrieving the entered value for amount to be paid
-// 	const amountToBePaid = payNowButton.children[1].value;
-// 	// Initializing Razorpay with the entered amount
+// payNowButton.addEventListener("onclick", () => {
   
-//   });
-  
-payNowButton.addEventListener('click', () => {
-	const amountToBePaid = totalPrice;
-	initializeRazorpay(amountToBePaid);
-})
-// //   alert('Payment successful!');
+// 	const amountToBePaid = totalPrice;
+// 	initializeRazorpay(amountToBePaid);
+// })
 
 function initializeRazorpay(amountToBePaid) {
 	// Payment options for Razorpay
 	var options = {
-	  key: razorpay_key_id,
+	  key: "rzp_test_3YddYTESNr2nEb",
 	  amount: amountToBePaid * 100,
 	  currency: 'INR',
 	  name: 'Sanskrit Insider',
 	  description: 'Payment for selected courses',
 	  image: '/assets/logo_SI.png',
 	  handler: function (response) {
-		// alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
 	  },
-	  // user detail can be manipulated using logged in user's detail
 	  prefill: {
 		name: 'Ruchika Kadam',
 		email: 'sanskritInsider.com',
@@ -179,10 +105,9 @@ function initializeRazorpay(amountToBePaid) {
 		color: '#1f0a573b',
 	  },
 	};
-	 // Creating a new Razorpay instance with the provided options
-
-var rzp = new Razorpay(options);
-  document.getElementById('payNow').onclick = function (e) {
+// Creating a new Razorpay instance with the provided options
+  var rzp = new Razorpay(options);
+  btn.onclick = function (e) {
     // Event listener for button click to initiate payment
     if(totalPrice === 0){
       alert("Add courses to pay");// Alert to add courses in the cart
@@ -193,11 +118,11 @@ var rzp = new Razorpay(options);
   };
 }
 
-
-
-
+btn.addEventListener("click", function (){
+  initializeRazorpay(amountToBePaid)
+  console.log("jk")
+}) 
 //dark bg of navbar
 window.addEventListener("scroll", () => {
-	console.log(window);
 	document.querySelector(`.navbar`).classList.toggle("bg-color", window.scrollY > 100);
 });

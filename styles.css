@@ -187,9 +187,17 @@ header {
   cursor: pointer;
   border-radius: 100%;
 }
+
+/* ----------------------Bottom-most section--------------------- */
+.bottomContainer{
+  /* border: 3px solid red; */
+  width: 80%;
+  margin: 4rem;
+  display: flex;
+}
 .sign-up-section {
-  position: absolute;
-  right: 7.5rem;
+  float: left;
+  width: 50%;
 }
 .glass-container {
   background: rgba(255, 255, 255, 0.2);
@@ -207,12 +215,12 @@ header {
 .input-group {
   margin-top: 1rem;
   margin-bottom: 15px;
-  position: relative;
+  /* position: relative; */
 }
 .input-group input {
   padding: 10px;
   width: 100%;
-  border: none;
+  border: 1px solid rgb(163, 163, 163);
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
@@ -232,11 +240,34 @@ header {
   color: white;
   margin-top: 10px;
 }
-.emptySpace{
-    min-height: 100px;
+
+/* -----------------------footer-------------------- */
+.footerContainer{
+  line-height: 1.5rem;
+  width: 40%;
+  float: right;
+}
+.footerContainer h3, .footerContainer h4{
+  color: var(--hover);
+  text-shadow: 2px 2px 2px #1f0a57;
+}
+.footerContainer a{
+  text-decoration:#27242f;
+  color: #a3a2a6;
+  cursor: pointer;
+}
+.footerContainer a:hover{
+  text-decoration: underline;
+}
+.copyright{
+  width: 90%;
+  /* border: 2px solid pink; */
+  text-align: center;
+  font-weight: 400;
+  color: white;
 }
 
-/* cart css */
+/* -----------------------cart-------------------- */
 .cart_container {
   width: 80vw;
   min-height: 30rem;
@@ -283,4 +314,7 @@ header {
 .cart_container button:hover{
     transform: scale(0.98);
     color: #474157;
+}
+.cart_container .cart {
+  border : 4px dotted yellow;
 }

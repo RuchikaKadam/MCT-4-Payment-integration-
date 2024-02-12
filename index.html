@@ -15,7 +15,7 @@
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#courses">Courses</a></li>
-          <li><a href="./cart.html" target="_blank">Cart</a></li>
+          <li><a href="./cart.html">Cart</a></li>
           <li><a href="#signup">Sign-up</a></li>
         </ul>
       </div>
@@ -24,54 +24,55 @@
       <div class="brandline">LET'S GROW OUR KNOWLEDGE TOGETHER!</div>
     </section>
     <section class="courses_main_container" id="courses">
-        <h2>Choose Your Courses</h2>
-        
-        <div class="cardContainer">
-            <div class="courseCard" id="begginer">
-                <div class="pricing-plan glass-effect">
-                    <h3>Begginer</h3>
-                    <p>50 hours</p>
-                    <p class="price"><span>&#8377</span> 6,000</p>
-                    <ul>
-                        <li>Sanskrit script</li>
-                        <li>Word pronounciation</li>
-                        <li>Basic conversations</li>
-                    </ul>
-                    <button class="btn" id="btn">Add to the Cart</button>
-                  </div>
-            </div>
-            <div class="courseCard" id="intermidiate">
-                <div class="pricing-plan glass-effect">
-                    <h3>Intermidiate</h3>
-                    <p>70 hours</p>
-                    <p class="price"><span>&#8377</span> 10,000</p>
-                    <ul>
-                        <li>Poetry</li>
-                        <li>Prose</li>
-                        <li>Advanced conversations</li>
-                    </ul>
-                    <button class="btn" id="btn">Add to the Cart</button>
-                  </div>
-            </div>
-            <div class="courseCard" id="advanced">
-                <div class="pricing-plan glass-effect">
-                    <h3>Advanced</h3>
-                    <p>60 hours</p>
-                    <p class="price"><span>&#8377</span> 8,000</p>
-                    <ul>
-                        <li>Writing</li>
-                        <li>Advanced reciting</li>
-                        <li>Professional Sanskrit</li>
-                    </ul>
-                    <button class="btn" id="btn">Add to the Cart</button>
-                  </div>
-            </div>
+      <h2>Choose Your Courses</h2>
+      <div class="cardContainer">
+        <div class="courseCard" id="begginer">
+          <div class="pricing-plan glass-effect">
+            <h3>Begginer</h3>
+            <p>50 hours</p>
+            <p class="price"><span>&#8377</span> 6,000</p>
+            <ul>
+              <li>Sanskrit script</li>
+              <li>Word pronounciation</li>
+              <li>Basic conversations</li>
+            </ul>
+            <button class="paybtn addToCart" data-name="Begginer Course" data-price="6000">Add to the Cart</button>
+          </div>
         </div>
-        
+        <div class="courseCard" id="intermidiate">
+          <div class="pricing-plan glass-effect">
+            <h3>Intermidiate</h3>
+            <p>70 hours</p>
+            <p class="price"><span>&#8377</span> 10,000</p>
+            <ul>
+              <li>Poetry</li>
+              <li>Prose</li>
+              <li>Advanced conversations</li>
+            </ul>
+            <button class="paybtn addToCart" data-name="Intermidiate Course" data-price="10000">Add to the Cart</button>
+          </div>
+        </div>
+        <div class="courseCard" id="advanced">
+          <div class="pricing-plan glass-effect">
+            <h3>Advanced</h3>
+            <p>60 hours</p>
+            <p class="price"><span>&#8377</span> 8,000</p>
+            <ul>
+              <li>Writing</li>
+              <li>Advanced reciting</li>
+              <li>Professional Sanskrit</li>
+            </ul>
+            <button class="paybtn addToCart" data-name="Advanced Course" data-price="8000">Add to the Cart</button>
+          </div>
+        </div>
+      </div>
     </section>
-    <div class="emptySpace"></div>
-    <!-- <button class="popup" id="popup" style="font-size:40px">&#127776 </button>
-    <section class="sign-up-section">
+
+
+
+    <!-- not important or related to the actual project -->
+    <div class="bottomContainer">
+      <section class="sign-up-section">
         <div class="glass-container">
             <div class="signup-form">
               <h2>Sign Up</h2>
@@ -86,13 +87,34 @@
               </div>
               <button id="signup-btn">Sign Up</button>
             </div>
-          </div>
-          
-    </section>
-    <section class="contact_info" id="contact">
-        
-    </section> -->
+        </div>  
+      </section>
 
+      <footer class="footerContainer" id="about">
+        <div class="part1">
+            <h3>Sanskrit Insider</h3>
+            <p>We're passionate about delivering the best courses for curious learners to become outstanding Sanskrit language Speakers.</p>
+        </div>
+        <div class="part2">
+          <h4>Tools</h4>
+          <a href="https://www.wisdomlib.org/" target="_blank">wisdomlib.org</a>
+          <br>
+          <a href="https://ashtadhyayi.com/" target="_blank">ashtadhyayi.com</a>
+          <br>
+          <a href="https://www.youtube.com/c/thesanskritchannel" target="_blank">The Sanskrit Channel</a>
+        </div>
+        <div class="part2">
+          <h4>Partners</h4>
+          <a href="#">unicorns.com</a>
+          <br>
+          <a href="#">worlsanskrit.com</a>
+          <br>
+          <a href="#">association.gov</a>
+        </div>
+      </footer>
+    </div>
+    <p class="copyright">Copyright © 2045 All rights reserved - By Sanskrit Insider</p>
+    <button class="popup" id="popup" style="font-size:40px">&#127776 </button>
 
     <script src="./script.js"></script>
   </body>

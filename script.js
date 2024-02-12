@@ -1,6 +1,8 @@
 // const addToCartBtn = document.querySelector('.btn');
 //   const cart = [];
 
+// const { urlencoded } = require("body-parser");
+
 //   addToCartBtn.addEventListener('click', () => {
 //     const product = {
 //       name: 'Beginner',
@@ -98,7 +100,6 @@ function cartDataLoad() {
 //2
 // Get the cart container and pay now button
 const cartContainer = document.querySelector(".cart_container");
-const payNowButton = document.getElementById("payNow");
 
 // Function to add a course to the cart
 function addToCart(course) {
@@ -137,11 +138,60 @@ document.querySelectorAll(".addToCart").forEach((button) => {
 });
 
 // Add event listener to the pay now button
-// payNowButton.addEventListener('click', () => {
-//   alert('Payment successful!');
-//   // You can add code here to process the payment or redirect to a payment page
-// });
+const payNowButton = document.querySelector("payNow");
 
+// Event listener for keyup event inside the form
+// payNowButton.addEventListener("keyup", ()=>{
+// 	// Retrieving the entered value for amount to be paid
+// 	const amountToBePaid = payNowButton.children[1].value;
+// 	// Initializing Razorpay with the entered amount
+  
+//   });
+  
+payNowButton.addEventListener('click', () => {
+	const amountToBePaid = totalPrice;
+	initializeRazorpay(amountToBePaid);
+})
+// //   alert('Payment successful!');
+
+function initializeRazorpay(amountToBePaid) {
+	// Payment options for Razorpay
+	var options = {
+	  key: razorpay_key_id,
+	  amount: amountToBePaid * 100,
+	  currency: 'INR',
+	  name: 'Sanskrit Insider',
+	  description: 'Payment for selected courses',
+	  image: '/assets/logo_SI.png',
+	  handler: function (response) {
+		// alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+	  },
+	  // user detail can be manipulated using logged in user's detail
+	  prefill: {
+		name: 'Ruchika Kadam',
+		email: 'sanskritInsider.com',
+		contact: `${Math.floor(1000000000 + Math.random() * 9000000000)}`,
+	  },
+	  notes: {
+		address: 'Sanskrit Insider, Pune',
+	  },
+	  theme: {
+		color: '#1f0a573b',
+	  },
+	};
+	 // Creating a new Razorpay instance with the provided options
+
+var rzp = new Razorpay(options);
+  document.getElementById('payNow').onclick = function (e) {
+    // Event listener for button click to initiate payment
+    if(totalPrice === 0){
+      alert("Add courses to pay");// Alert to add courses in the cart
+      return;
+    }
+    rzp.open(); // Opening Razorpay payment popup
+    e.preventDefault();// Preventing default button click behavior
+  };
+}
 
 
 

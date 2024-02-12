@@ -63,60 +63,91 @@
 // 	});
 // });
 
-document.addEventListener('DOMContentLoaded', () => {
-	const addToCartButtons = document.querySelectorAll('.addToCart');
-	const cart = document.getElementById('cart');
-	const payNowButton = document.querySelector('#cart .payNow');
-	let totalPrice = 0;
-  
-	addToCartButtons.forEach(button => {
-	  button.addEventListener('click', () => {
-		const name = button.dataset.name;
-		const price = button.dataset.price;
-  
-		const product = document.createElement('div');
-		product.classList.add('product');
-		product.innerHTML = `
-		  <h3>${name}</h3>
-		  <p>&#8377; ${price}</p>
-		`;
-  
-		cart.appendChild(product);
-  
-		totalPrice += parseInt(price);
-		payNowButton.innerHTML = `Pay <span>&#8377; ${totalPrice}</span>`;
-	  });
-	});
+
+
+let cartData = sessionStorage.getItem("cartData")
+  ? JSON.parse(sessionStorage.getItem("cartData"))
+  : [];
+
+// Cart
+function cartDataLoad() {
+  let cart = document.querySelector(".cart");
+  cartData.map((course) => {
+    const courseDiv = document.createElement("div");
+    courseDiv.classList.add("course");
+
+    // Add the course details to the div
+    courseDiv.innerHTML = `
+    <h3>${course.name}</h3>
+    <p>Price: &#8377; ${course.price}</p>
+    <br>
+    `;
+    // Add the course div to the cart container
+    cart.appendChild(courseDiv);
+    // Update the total price
+
+    const btn = document.querySelector("#payNow");
+    let totalPrice = cartData.reduce((acc, curItem) => {
+      return acc + curItem.price;
+    }, 0);
+
+    btn.innerHTML = `Pay &#8377 ${totalPrice}`;
   });
+}
+
+//2
+// Get the cart container and pay now button
+const cartContainer = document.querySelector(".cart_container");
+const payNowButton = document.getElementById("payNow");
+
+// Function to add a course to the cart
+function addToCart(course) {
+  let isExist = cartData.find((item) => item.name == course.name);
+
+  if (!isExist) {
+    cartData.push(course);
+    sessionStorage.removeItem("cartData");
+    sessionStorage.setItem("cartData", JSON.stringify(cartData));
+    cartDataLoad();
+  }
+}
+
+// Function to update the total price
+function updateTotalPrice(priceChange) {
+  // Get the current total price
+  const totalPrice = parseInt(
+    cartContainer.querySelector(".totalPrice").textContent.split(" ")[1]
+  );
+
+  // Update the total price
+  cartContainer.querySelector(
+    ".totalPrice"
+  ).textContent = `Total Price: &#8377; ${totalPrice + priceChange}`;
+}
+
+// Add event listeners to the add to cart buttons
+document.querySelectorAll(".addToCart").forEach((button) => {
+  button.addEventListener("click", () => {
+    const course = {
+      name: button.dataset.name,
+      price: parseInt(button.dataset.price),
+    };
+    addToCart(course);
+  });
+});
+
+// Add event listener to the pay now button
+// payNowButton.addEventListener('click', () => {
+//   alert('Payment successful!');
+//   // You can add code here to process the payment or redirect to a payment page
+// });
 
 
 
 
 
-
-
-
-
-
-
-
-
-//   not important or related to the actual project
-  const animatedBtn = document.querySelector(".popup");
-  animatedBtn.addEventListener("click",()=>{
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = '🌠';
-    const randomX = Math.floor(Math.random() * window.innerWidth);
-    const randomY = Math.floor(Math.random() * window.innerHeight);
-  
-    heart.style.left = randomX + 'px';
-    heart.style.top = randomY + 'px';
-  
-    backgroundContainer.appendChild(heart);
-    // Removes the heart element after 2 seconds
-    setTimeout(()=>{
-        heart.remove();
-
-    }, 2000);
+//dark bg of navbar
+window.addEventListener("scroll", () => {
+	console.log(window);
+	document.querySelector(`.navbar`).classList.toggle("bg-color", window.scrollY > 100);
 });

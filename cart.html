@@ -6,7 +6,7 @@
     <title>Cart</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
+<body onload="cartDataLoad()">
     <header>
         <div class="navbar">
             <div class="logo">
@@ -20,12 +20,12 @@
             </ul>
           </div>
     </header>
-    <section class="cart_container">
+    <section class="cart_container" id="cart">
       <h2>Start Learning!</h2>
-      <div class="cart" id="cart">
+      <div class="cart">
         <!-- products will be added here dynamically using javascript -->
       </div>
-      <button class="payNow" id="payNow">Add Courses</span></button>
+      <button class="payNow" id="payNow">Pay &#8377</button>
     </section>
     
     <script type="module" src="https://checkout.razorpay.com/v1/checkout.js"></script>

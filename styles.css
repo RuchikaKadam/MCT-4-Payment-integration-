@@ -334,3 +334,32 @@ header {
   font-size: 1rem;
   float: right;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* razorpay color change */
+#overlay{
+    --primary-color: #1f0a57;
+    --cta-color: #1f0a57;
+    --highlight-color: #1f0a57;
+    --background-color: #1f0a57;
+    --magic-brand-color: #1f0a57;
+    --razorpay-brand-color: #1f0a57;
+    --blue-label-text: #1f0a57;
+}

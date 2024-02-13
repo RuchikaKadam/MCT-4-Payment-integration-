@@ -9,7 +9,10 @@ let totalPrice = cartData.reduce((acc, curItem) => {
 let amountToBePaid = totalPrice;
 const courseDiv = document.createElement("div");
 const btn = document.querySelector("#payNow");
-// Cart
+// Get the cart container and pay now button
+const cartContainer = document.querySelector(".cart_container");
+// 1
+// function dealing with cart
 function cartDataLoad() {
   let cart = document.querySelector(".cart");
   cartData.map((course) => {
@@ -25,8 +28,6 @@ function cartDataLoad() {
     // Add the course div to the cart container
     cart.appendChild(courseDiv);
     // Update the total price
-    
-    
     btn.addEventListener("click",() =>{
       initializeRazorpay(amountToBePaid);
     })
@@ -35,9 +36,6 @@ function cartDataLoad() {
   });
 }
 //2
-// Get the cart container and pay now button
-const cartContainer = document.querySelector(".cart_container");
-
 // Function to add a course to the cart
 function addToCart(course) {
   let isExist = cartData.find((item) => item.name == course.name);
@@ -72,15 +70,6 @@ document.querySelectorAll(".addToCart").forEach((button) => {
     addToCart(course);
   });
 });
-
-// Add event listener to the pay now button
-// const payNowButton = document.getElementById("payNow");
-
-// payNowButton.addEventListener("onclick", () => {
-  
-// 	const amountToBePaid = totalPrice;
-// 	initializeRazorpay(amountToBePaid);
-// })
 
 function initializeRazorpay(amountToBePaid) {
 	// Payment options for Razorpay
@@ -117,12 +106,12 @@ function initializeRazorpay(amountToBePaid) {
     e.preventDefault();// Preventing default button click behavior
   };
 }
-
-btn.addEventListener("click", function (){
-  initializeRazorpay(amountToBePaid)
-  console.log("jk")
-}) 
 //dark bg of navbar
 window.addEventListener("scroll", () => {
-	document.querySelector(`.navbar`).classList.toggle("bg-color", window.scrollY > 100);
+  const navbar = document.querySelector(`.navbar`);
+  if (window.scrollY > 100) {
+    navbar.classList.add("bg-color");
+  } else {
+    navbar.classList.remove("bg-color");
+  }
 });

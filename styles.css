@@ -335,7 +335,57 @@ header {
   float: right;
 }
 
-
+/* mobile phones */
+@media only screen and (max-width: 600px) {
+  header{
+    background: none;
+  }
+  .container{
+    height: 5%;
+    width: 80%;
+  }
+  .navbar ul {
+    min-height: none;
+    margin-top: 1.8rem;
+  }
+  .navbar ul li a{
+    margin-left: 2.6rem;
+  }
+  .logo img {
+    display: none;
+  }
+  .brandline {
+    margin-top: 3.5rem;
+    font-size: 2rem;
+  }
+  .courses_main_container {
+    margin: 3.5rem;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .courses_main_container h2{
+    font-size: 2.8rem;
+    text-align: justify;
+  }
+  .courses_main_container .courseCard{
+    min-width: 100%;
+    min-height: 300px;
+    margin-bottom: 2rem;
+  }
+  .pricing-plan::before {
+    height: 0;
+  }
+  .pricing-plan ul {
+    margin-top: 1rem;
+  }
+  .sign-up-section{
+    position: relative;
+    width: 100%;
+  }
+  .footerContainer .part1{
+    display: none;
+  }
+}
 
 
 

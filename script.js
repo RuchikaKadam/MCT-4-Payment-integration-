@@ -106,6 +106,9 @@ function initializeRazorpay(amountToBePaid) {
     e.preventDefault();// Preventing default button click behavior
   };
 }
+btn.addEventListener("click",() =>{
+  initializeRazorpay(amountToBePaid);
+})
 //dark bg of navbar
 window.addEventListener("scroll", () => {
   const navbar = document.querySelector(`.navbar`);
